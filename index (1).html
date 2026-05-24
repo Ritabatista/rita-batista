@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rita Batista · Product Manager</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --bg2: #f7f7f5; --bg3: #f1f0ec;
+    --text: #1a1a1a; --text2: #555; --text3: #999;
+    --border: rgba(0,0,0,0.1); --border2: rgba(0,0,0,0.2);
+    --blue: #185FA5; --blue-bg: #E6F1FB; --blue-text: #0C447C;
+    --radius: 8px; --radius-lg: 12px;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; background: var(--bg3); color: var(--text); line-height: 1.6; }
+  a { color: inherit; text-decoration: none; }
+
+  .nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2rem;
+    background: var(--bg);
+    border-bottom: 0.5px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .nav-name { font-size: 15px; font-weight: 500; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 13px; color: var(--text2); }
+  .nav-links a:hover { color: var(--text); }
+
+  .wrapper { max-width: 820px; margin: 0 auto; padding: 0 1rem; }
+
+  section { padding: 3rem 0; border-bottom: 0.5px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .hero { background: var(--bg2); padding: 4rem 2rem; text-align: center; }
+  .hero-initials {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--blue-bg); color: var(--blue-text);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 500; margin: 0 auto 1.5rem;
+  }
+  .hero h1 { font-size: 28px; font-weight: 500; margin-bottom: 0.5rem; }
+  .hero-role { font-size: 15px; color: var(--text2); margin-bottom: 1.5rem; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 2rem; }
+  .tag { font-size: 12px; padding: 4px 12px; border: 0.5px solid var(--border2); border-radius: 20px; color: var(--text2); background: var(--bg); }
+  .hero-contact { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .contact-btn {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; padding: 8px 16px;
+    border: 0.5px solid var(--border2); border-radius: var(--radius);
+    color: var(--text2); background: var(--bg); cursor: pointer;
+    transition: background 0.15s;
+  }
+  .contact-btn:hover { background: var(--bg3); }
+  .contact-btn i { font-size: 16px; color: var(--blue); }
+
+  .section-title { font-size: 12px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+
+  .sobre-text { font-size: 15px; color: var(--text2); line-height: 1.8; }
+
+  .timeline { display: flex; flex-direction: column; gap: 1rem; }
+  .job-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; flex-wrap: wrap; gap: 8px; }
+  .job-title { font-size: 15px; font-weight: 500; }
+  .job-period { font-size: 12px; color: var(--text3); padding: 3px 10px; background: var(--bg2); border-radius: 20px; white-space: nowrap; }
+  .job-company { font-size: 13px; color: var(--blue); margin-bottom: 0.75rem; }
+  .job-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .job-bullets li { font-size: 13px; color: var(--text2); padding-left: 1rem; position: relative; line-height: 1.6; }
+  .job-bullets li::before { content: "·"; position: absolute; left: 0; color: var(--text3); font-size: 18px; top: -2px; }
+
+  .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .case-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+  .case-icon { font-size: 20px; color: var(--blue); margin-bottom: 0.75rem; }
+  .case-metric { font-size: 28px; font-weight: 500; margin-bottom: 4px; }
+  .case-label { font-size: 13px; color: var(--text2); margin-bottom: 0.5rem; line-height: 1.5; }
+  .case-context { font-size: 12px; color: var(--text3); }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .skill-group { background: var(--bg2); border-radius: var(--radius); padding: 1rem; }
+  .skill-group-title { font-size: 11px; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag { font-size: 12px; padding: 3px 8px; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); color: var(--text2); }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .contact-item { display: flex; align-items: center; gap: 10px; background: var(--bg2); border-radius: var(--radius); padding: 0.875rem 1rem; }
+  .contact-item i { font-size: 20px; color: var(--blue); }
+  .contact-info p:first-child { font-size: 11px; color: var(--text3); margin-bottom: 2px; }
+  .contact-info p:last-child { font-size: 13px; color: var(--text); }
+
+  footer { text-align: center; padding: 2rem; background: var(--bg2); }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero { padding: 3rem 1rem; }
+    .hero h1 { font-size: 22px; }
+    section { padding: 2rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-name">Rita Batista</span>
+  <div class="nav-links">
+    <a href="#sobre">sobre</a>
+    <a href="#experiencia">experiência</a>
+    <a href="#cases">cases</a>
+    <a href="#skills">habilidades</a>
+    <a href="#contato">contato</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="wrapper">
+    <div class="hero-initials">RB</div>
+    <h1>Rita Batista</h1>
+    <p class="hero-role">Product Manager · CRM & Customer Success · Data-Driven<br>Londrina, PR — disponível para oportunidades remotas e presenciais</p>
+    <div class="hero-tags">
+      <span class="tag">Roadmap & Strategy</span>
+      <span class="tag">Power BI · SQL</span>
+      <span class="tag">Scrum & Kanban</span>
+      <span class="tag">Salesforce</span>
+      <span class="tag">KPIs & OKRs</span>
+      <span class="tag">AI-Driven</span>
+    </div>
+    <div class="hero-contact">
+      <a href="mailto:ritacoutobatista@gmail.com" class="contact-btn"><i class="ti ti-mail"></i> ritacoutobatista@gmail.com</a>
+      <a href="https://linkedin.com/in/rita-batistab6b648248" target="_blank" class="contact-btn"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+      <a href="tel:+5581988196559" class="contact-btn"><i class="ti ti-phone"></i> (81) 98819-6559</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <section id="sobre">
+    <p class="section-title">sobre mim</p>
+    <p class="sobre-text">Sou Product Manager com experiência end-to-end no ciclo de vida de produtos digitais — da descoberta ao lançamento e evolução contínua. Atuo na interseção entre tecnologia, negócio e experiência do cliente, traduzindo demandas complexas em roadmaps claros e decisões baseadas em dados. Tenho vivência com liderança de iniciativas multifuncionais, métricas de produto (DAU/MAU, retenção, churn, NPS, LTV) e entrega de resultados mensuráveis em contextos B2C e B2B. Meu background técnico em Análise e Desenvolvimento de Sistemas me dá autonomia para dialogar com times de engenharia sem perder a visão de negócio.</p>
+  </section>
+
+  <section id="experiencia">
+    <p class="section-title">trajetória</p>
+    <div class="timeline">
+
+      <div class="job-card">
+        <div class="job-header">
+          <span class="job-title">Analista Sênior de Produtos Digitais</span>
+          <span class="job-period">Abr/2026 – Atual</span>
+        </div>
+        <p class="job-company">Grupo The Best · Londrina, PR</p>
+        <ul class="job-bullets">
+          <li>Gestão end-to-end do aplicativo de fidelidade B2C — roadmap, backlog, lançamento e evolução contínua</li>
+          <li>Monitoramento de KPIs via Power BI e Salesforce: retenção, churn, DAU/MAU, LTV e NPS</li>
+          <li>Liderança de squads multifuncionais com coordenação de sprints e refinamento de histórias com engenharia</li>
+          <li>Ponte entre tecnologia, marketing, operação e negócio para priorização de features e entrega de valor</li>
+        </ul>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <span class="job-title">Trainee de Produtos Digitais</span>
+          <span class="job-period">Abr/2025 – Abr/2026</span>
+        </div>
+        <p class="job-company">Grupo The Best · Londrina, PR</p>
+        <ul class="job-bullets">
+          <li>Lançamento de features com impacto de +35% no engajamento da base de usuários</li>
+          <li>Automação de dashboards de performance com Power BI, elevando eficiência operacional em 40%</li>
+          <li>Segmentação estratégica e Customer Success via Salesforce, com redução de churn e aumento de LTV</li>
+        </ul>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <span class="job-title">Analista de Rede Júnior</span>
+          <span class="job-period">Jun/2024 – Mar/2025</span>
+        </div>
+        <p class="job-company">Mais Fibra PE · Olinda, PE</p>
+        <ul class="job-bullets">
+          <li>Gestão de SLA 98% para clientes B2B em ambiente de alta criticidade operacional</li>
+          <li>Redução de MTTR em 45% via monitoramento proativo com Zabbix e Grafana</li>
+          <li>Atendimento consultivo com NPS 85+</li>
+        </ul>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <span class="job-title">Analista de Suporte de Sistemas</span>
+          <span class="job-period">Jul/2023 – Mai/2024</span>
+        </div>
+        <p class="job-company">ZeroUm Informática / Prefeitura do Recife · Recife, PE</p>
+        <ul class="job-bullets">
+          <li>Gestão de tickets via Salesforce Service Cloud com resolução dentro de SLAs</li>
+          <li>Criação de base de conhecimento para escala e redução de tempo de resolução</li>
+        </ul>
+      </div>
+
+      <div class="job-card">
+        <div class="job-header">
+          <span class="job-title">Aprendiz — Residência de Produto</span>
+          <span class="job-period">Out/2022 – Dez/2022</span>
+        </div>
+        <p class="job-company">Porto Digital · Recife, PE</p>
+        <ul class="job-bullets">
+          <li>Desenvolvimento end-to-end da plataforma ELOACTO com Scrum e Design Thinking</li>
+          <li>Discovery com usuários, definição de funcionalidades e entrega incremental</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="cases">
+    <p class="section-title">cases e resultados</p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-icon"><i class="ti ti-trending-up"></i></div>
+        <p class="case-metric">+35%</p>
+        <p class="case-label">aumento de engajamento no app de fidelidade</p>
+        <p class="case-context">Grupo The Best · 2025</p>
+      </div>
+      <div class="case-card">
+        <div class="case-icon"><i class="ti ti-chart-bar"></i></div>
+        <p class="case-metric">+40%</p>
+        <p class="case-label">eficiência operacional com automação de dashboards</p>
+        <p class="case-context">Grupo The Best · 2025</p>
+      </div>
+      <div class="case-card">
+        <div class="case-icon"><i class="ti ti-activity"></i></div>
+        <p class="case-metric">98%</p>
+        <p class="case-label">SLA mantido em ambiente B2B de alta criticidade</p>
+        <p class="case-context">Mais Fibra PE · 2024</p>
+      </div>
+      <div class="case-card">
+        <div class="case-icon"><i class="ti ti-clock-down"></i></div>
+        <p class="case-metric">-45%</p>
+        <p class="case-label">redução de MTTR com monitoramento proativo</p>
+        <p class="case-context">Mais Fibra PE · 2024</p>
+      </div>
+      <div class="case-card">
+        <div class="case-icon"><i class="ti ti-heart"></i></div>
+        <p class="case-metric">85+</p>
+        <p class="case-label">NPS consistente em atendimento consultivo B2B</p>
+        <p class="case-context">Mais Fibra PE · 2024</p>
+      </div>
+      <div class="case-card">
+        <div class="case-icon"><i class="ti ti-users"></i></div>
+        <p class="case-metric">↓ churn</p>
+        <p class="case-label">redução de churn e aumento de LTV via Customer Success</p>
+        <p class="case-context">Grupo The Best · 2025–2026</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <p class="section-title">habilidades e ferramentas</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">Gestão de Produto</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Roadmap</span><span class="skill-tag">Backlog</span>
+          <span class="skill-tag">Discovery</span><span class="skill-tag">OKRs</span>
+          <span class="skill-tag">Design Thinking</span><span class="skill-tag">User Stories</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Dados & Analytics</p>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL</span><span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Power Query</span><span class="skill-tag">Google Analytics</span>
+          <span class="skill-tag">KPIs</span><span class="skill-tag">NPS · CSAT</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Ferramentas</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Salesforce</span><span class="skill-tag">Zabbix</span>
+          <span class="skill-tag">Grafana</span><span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span><span class="skill-tag">Excel Avançado</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Metodologias</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Scrum</span><span class="skill-tag">Kanban</span>
+          <span class="skill-tag">Lean</span><span class="skill-tag">Ágil</span>
+          <span class="skill-tag">AI-Driven</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Linguagens</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+          <span class="skill-tag">JavaScript</span><span class="skill-tag">HTML · CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Certificações</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Salesforce Admin</span><span class="skill-tag">AI-900 Azure</span>
+          <span class="skill-tag">Power BI</span><span class="skill-tag">Customer Success</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <p class="section-title">contato</p>
+    <div class="contact-grid">
+      <a href="mailto:ritacoutobatista@gmail.com" class="contact-item">
+        <i class="ti ti-mail"></i>
+        <div class="contact-info"><p>e-mail</p><p>ritacoutobatista@gmail.com</p></div>
+      </a>
+      <a href="tel:+5581988196559" class="contact-item">
+        <i class="ti ti-phone"></i>
+        <div class="contact-info"><p>telefone</p><p>(81) 98819-6559</p></div>
+      </a>
+      <a href="https://linkedin.com/in/rita-batistab6b648248" target="_blank" class="contact-item">
+        <i class="ti ti-brand-linkedin"></i>
+        <div class="contact-info"><p>linkedin</p><p>linkedin.com/in/rita-batistab6b648248</p></div>
+      </a>
+      <div class="contact-item">
+        <i class="ti ti-map-pin"></i>
+        <div class="contact-info"><p>localização</p><p>Londrina, PR — remoto disponível</p></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Rita Batista · Product Manager · 2026</p>
+</footer>
+
+</body>
+</html>
